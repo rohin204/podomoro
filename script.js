@@ -47,8 +47,9 @@ function timer () {
     }
     else { 
         mySound.play();
-        alert(`time's up!`)
-    return ;
+        alert(`time's up!, type reset to end`);
+        clearInterval(currentInterval)
+        return ;
     }
 } 
 start_btn.addEventListener('click', () => {

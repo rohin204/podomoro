@@ -34,18 +34,22 @@ function addBreak() {
 let seconds;
 function timer () {
 
+    if(seconds) {
+        
+            seconds--
+            
+            let hrs = Math.floor(seconds / 3600)
+            let mins = Math.floor((seconds - (hrs * 3600)) / 60)
+            let secs = seconds % 60
+            
+            time_el.innerText = `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 
-
-    seconds--
-    
-    let hrs = Math.floor(seconds / 3600)
-    let mins = Math.floor((seconds - (hrs * 3600)) / 60)
-    let secs = seconds % 60
-    
-    time_el.innerText = `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-    if(!seconds) { 
+    }
+    else { 
         mySound.play();
-        alert(`time's up!`)}
+        alert(`time's up!`)
+    return ;
+    }
 } 
 start_btn.addEventListener('click', () => {
     

@@ -79,6 +79,7 @@
   } */
   
  .options {
+ 
     margin: 0.5rem auto ;
     padding: 0.5rem 0rem;
     align-items: center;
@@ -94,4 +95,15 @@
     color: #0F1035;
 
   }
-
+.time input {
+  width: 23%;
+  text-align: center;
+  font-size: 13rem;
+  color: #DCF2F1;
+appearance: none;
+background:none;
+border: none;
+outline:none;
+user-select: none;
+cursor:pointer;
+}

@@ -2,11 +2,21 @@ const time_el = document.querySelector('.watch .time')
 const start_btn = document.querySelector('#start');
 const stop_btn = document.querySelector('#stop');
 const reset_btn = document.querySelector('#reset');
+let mySound = new Audio('alarm_01.mp3')
+
+function toSeconds() {
+
+    const hour = parseInt(document.querySelector('#hrs').value) || 0;
+    const min = parseInt(document.querySelector('#mins').value) || 0;
+    const sec = parseInt(document.querySelector('#secs').value) || 0;
+    
+    let seconds = hour * 3600 + min * 60 + sec;
+    console.log("seconds:", seconds);
+
+    return seconds
+}
 
 
-
-
-let seconds = 0;
 let interval = null;
 let currentInterval = null;
 
@@ -21,8 +31,11 @@ function addBreak() {
     time_el.innerText = "00:10:00"
 }
 
+let seconds;
 function timer () {
-    if(!seconds) { return; } 
+
+
+
     seconds--
     
     let hrs = Math.floor(seconds / 3600)
@@ -30,9 +43,14 @@ function timer () {
     let secs = seconds % 60
     
     time_el.innerText = `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-    if(!seconds) { alert(`time's up!`)}
+    if(!seconds) { 
+        mySound.play();
+        alert(`time's up!`)}
 } 
 start_btn.addEventListener('click', () => {
+    
+    seconds = toSeconds()
+    
     if(currentInterval) {
         clearInterval(currentInterval)
     }
@@ -55,9 +73,13 @@ stop_btn.addEventListener('click', () => {
 });
 
 reset_btn.addEventListener('click', () => {
+    clearInterval(currentInterval); // Stop any existing timer
     seconds = 0; // Reset the seconds
-    time_el.innerText = "00:00:00"; // Reset the display
-    console.log("reset")
+    // time_el.innerText = "00:00:00"; // Update displayed time
+
+    location.reload(true);
+  
+    console.log("reset");
     
 });
 

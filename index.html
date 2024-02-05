@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pomodoro</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Roboto+Mono&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    
+    <div class="watch">
+        <div class="time">
+            00:00:00
+        </div>
+        <div class="controls">
+            <button id="start">start</button>
+            <button id="stop">stop</button>
+            <button id="reset">reset</button>
+        </div>
+
+    
+            <div class="options" id="1hr" onclick="addSess()">
+                1 hr session
+            </div>
+            <div class="options" id="10min" onclick="addBreak()">
+               10 min break
+            </div>
+      
+        
+    </div>
+    <script src="script.js"></script>
+    
+</body>
+</html>

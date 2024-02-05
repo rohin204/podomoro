@@ -30,6 +30,7 @@ function timer () {
     let secs = seconds % 60
     
     time_el.innerText = `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    if(!seconds) { alert(`time's up!`)}
 } 
 start_btn.addEventListener('click', () => {
     if(currentInterval) {

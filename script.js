@@ -2,6 +2,9 @@ const time_el = document.querySelector('.watch .time')
 const start_btn = document.querySelector('#start');
 const stop_btn = document.querySelector('#stop');
 const reset_btn = document.querySelector('#reset');
+
+const sess_btn = document.querySelector('#session');
+const break_btn = document.querySelector('#break');
 let mySound = new Audio('alarm_01.mp3')
 
 function toSeconds() {
@@ -20,18 +23,9 @@ function toSeconds() {
 let interval = null;
 let currentInterval = null;
 
-
-//need to work on these inputs..
-function addSess() {
-    seconds = 3600;
-    time_el.innerText = "01:00:00"
-}
-function addBreak() {
-    seconds = 600
-    time_el.innerText = "00:10:00"
-}
-
 let seconds;
+
+
 function timer () {
 
     if(seconds) {
@@ -52,6 +46,19 @@ function timer () {
         
     }
 } 
+
+sess_btn.addEventListener('click', () => {
+    seconds = 3600;
+    document.querySelector('#hrs').value = Math.floor(seconds / 3600)
+    document.querySelector('#mins').value = Math.floor((seconds - (Math.floor(seconds / 3600) * 3600)) / 60)
+    document.querySelector('#secs').value = seconds % 60
+});
+break_btn.addEventListener('click', () => {
+    seconds = 600;
+    document.querySelector('#hrs').value = Math.floor(seconds / 3600)
+    document.querySelector('#mins').value = Math.floor((seconds - (Math.floor(seconds / 3600) * 3600)) / 60)
+    document.querySelector('#secs').value = seconds % 60
+});
 start_btn.addEventListener('click', () => {
     
     seconds = toSeconds()
